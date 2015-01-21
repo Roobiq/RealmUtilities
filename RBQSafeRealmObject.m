@@ -1,8 +1,8 @@
 //
 //  RBQSafeRealmObject.m
-//  RBQFetchedResultsControllerTest
+//  RealmUtilities
 //
-//  Created by Lauren Smith on 1/4/15.
+//  Created by Adam Fish on 1/4/15.
 //  Copyright (c) 2015 Roobiq. All rights reserved.
 //
 
@@ -17,7 +17,7 @@
 
 @implementation RBQSafeRealmObject
 @synthesize className = _className,
-primaryKeyProperty = _primaryKeyProperty,
+primaryKeyType = _primaryKeyType,
 primaryKeyValue = _primaryKeyValue;
 
 + (instancetype)safeObjectFromObject:(RLMObject *)object
@@ -32,12 +32,10 @@ primaryKeyValue = _primaryKeyValue;
     
     RLMProperty *primaryKeyProperty = object.objectSchema.primaryKeyProperty;
     
-    RBQSafeRealmObject *safeObject = [[RBQSafeRealmObject alloc] initWithClassName:className
-                                                                   primaryKeyValue:value
-                                                                primaryKeyProperty:primaryKeyProperty
-                                                                             realm:object.realm];
-    
-    return safeObject;
+    return [[self alloc] initWithClassName:className
+                           primaryKeyValue:value
+                            primaryKeyType:primaryKeyProperty.type
+                                     realm:object.realm];
 }
 
 + (RLMObject *)objectfromSafeObject:(RBQSafeRealmObject *)safeObject
@@ -53,7 +51,7 @@ primaryKeyValue = _primaryKeyValue;
 
 - (id)initWithClassName:(NSString *)className
         primaryKeyValue:(id)primaryKeyValue
-     primaryKeyProperty:(RLMProperty *)primaryKeyProperty
+         primaryKeyType:(RLMPropertyType)primaryKeyType
                   realm:(RLMRealm *)realm
 {
     self = [super init];
@@ -61,7 +59,7 @@ primaryKeyValue = _primaryKeyValue;
     if (self) {
         _className = className;
         _primaryKeyValue = primaryKeyValue;
-        _primaryKeyProperty = primaryKeyProperty;
+        _primaryKeyType = primaryKeyType;
         _realmPath = realm.path;
     }
     
@@ -89,7 +87,7 @@ primaryKeyValue = _primaryKeyValue;
         return YES;
     }
     
-    if (_primaryKeyProperty.type == RLMPropertyTypeString) {
+    if (_primaryKeyType == RLMPropertyTypeString) {
         return [self.primaryKeyValue isEqualToString:object.primaryKeyValue];
     }
     
@@ -124,7 +122,7 @@ primaryKeyValue = _primaryKeyValue;
     RBQSafeRealmObject *safeObject = [[RBQSafeRealmObject allocWithZone:zone] init];
     safeObject->_className = _className;
     safeObject->_primaryKeyValue = _primaryKeyValue;
-    safeObject->_primaryKeyProperty = _primaryKeyProperty;
+    safeObject->_primaryKeyType = _primaryKeyType;
     safeObject->_realmPath = _realmPath;
     
     return safeObject;
