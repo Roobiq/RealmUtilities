@@ -9,7 +9,6 @@
 #import "RLMObject+Utilities.h"
 
 #import <Realm/Realm.h>
-#import <Realm/RLMProperty_Private.h>
 
 @implementation RLMObject (Utilities)
 
@@ -24,9 +23,7 @@
     if (primaryKeyProperty) {
         id value = nil;
         
-        if ([object respondsToSelector:primaryKeyProperty.getterSel]) {
-            value = [object valueForKey:primaryKeyProperty.getterName];
-        }
+        value = [object valueForKeyPath:primaryKeyProperty.name];
         
         if (!value) {
             @throw [NSException exceptionWithName:@"RBQException"
