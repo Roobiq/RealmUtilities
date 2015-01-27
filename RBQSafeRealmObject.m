@@ -22,7 +22,7 @@ primaryKeyValue = _primaryKeyValue;
 
 + (instancetype)safeObjectFromObject:(RLMObject *)object
 {
-    if (!object) {
+    if (!object || ![[object class] primaryKey]) {
         return nil;
     }
     
