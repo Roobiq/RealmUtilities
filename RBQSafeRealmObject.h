@@ -11,8 +11,8 @@
 
 /**
  *  An RBQSafeRealmObject acts as a thread-safe representation of a RLMObject.
- 
- @warning RBQSafeRealmObjects can only be created from RLMObjects that contain a primary key. Attempting to create a RBQSafeRealmObject without a primary key will result in an exception.
+ *
+ *  @warning RBQSafeRealmObjects can only be created from RLMObjects that contain a primary key. Attempting to create a RBQSafeRealmObject without a primary key will result in an exception.
  */
 @interface RBQSafeRealmObject : NSObject <NSCopying>
 
