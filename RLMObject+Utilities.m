@@ -23,7 +23,7 @@
     if (primaryKeyProperty) {
         id value = nil;
         
-        value = [object valueForKeyPath:primaryKeyProperty.name];
+        value = [object valueForKey:primaryKeyProperty.name];
         
         if (!value) {
             @throw [NSException exceptionWithName:@"RBQException"
