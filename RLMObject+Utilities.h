@@ -8,7 +8,8 @@
 
 #import "RLMObject.h"
 /**
- *  This utility category provides convenience methods to retrieve the primary key and original class name for an RLMObject.
+ *  This utility category provides convenience methods to retrieve the primary key and original
+ *  class name for an RLMObject.
  */
 @interface RLMObject (Utilities)
 
@@ -22,7 +23,8 @@
 + (id)primaryKeyValueForObject:(RLMObject *)object;
 
 /**
- *  Retrieve the original class name for a generic RLMObject. Realm dynamically changes the class at run-time, whereas this method returns the class name specified in the source code.
+ *  Retrieve the original class name for a generic RLMObject. Realm dynamically changes the class at
+ *  run-time, whereas this method returns the class name specified in the source code.
  *
  *  @param object A RLMObject
  *

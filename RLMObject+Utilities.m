@@ -37,8 +37,6 @@
     @throw [NSException exceptionWithName:@"RBQException"
                                    reason:@"Object does not have a primary key"
                                  userInfo:nil];
-    
-    return @"InvalidObject";
 }
 
 + (NSString *)classNameForObject:(RLMObject *)object

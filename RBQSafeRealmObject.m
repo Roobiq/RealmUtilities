@@ -17,8 +17,8 @@
 
 @implementation RBQSafeRealmObject
 @synthesize className = _className,
-primaryKeyType = _primaryKeyType,
-primaryKeyValue = _primaryKeyValue;
+            primaryKeyType = _primaryKeyType,
+            primaryKeyValue = _primaryKeyValue;
 
 + (instancetype)safeObjectFromObject:(RLMObject *)object
 {
@@ -46,7 +46,8 @@ primaryKeyValue = _primaryKeyValue;
 + (RLMObject *)objectInRealm:(RLMRealm *)realm
               fromSafeObject:(RBQSafeRealmObject *)safeObject
 {
-    return [NSClassFromString(safeObject.className) objectInRealm:realm forPrimaryKey:safeObject.primaryKeyValue];
+    return [NSClassFromString(safeObject.className) objectInRealm:realm
+                                                    forPrimaryKey:safeObject.primaryKeyValue];
 }
 
 - (id)initWithClassName:(NSString *)className
@@ -87,32 +88,23 @@ primaryKeyValue = _primaryKeyValue;
         return YES;
     }
     
-    if (_primaryKeyType == RLMPropertyTypeString) {
-        return [self.primaryKeyValue isEqualToString:object.primaryKeyValue];
-    }
-    
-    return self.primaryKeyValue == object.primaryKeyValue;
+    return [self.primaryKeyValue isEqual:object.primaryKeyValue];
 }
 
 - (BOOL)isEqual:(id)object
 {
-    if (_primaryKeyValue) {
-        return [self isEqualToObject:object];
+    if (self == object) {
+        return YES;
     }
-    else {
-        return [super isEqual:object];
+    if (![object isKindOfClass:[RBQSafeRealmObject class]]) {
+        return NO;
     }
+    return [self isEqualToObject:object];
 }
 
 - (NSUInteger)hash
 {
-    if (_primaryKeyValue) {
-        // modify the hash of our primary key value to avoid potential (although unlikely) collisions
-        return [_primaryKeyValue hash] ^ 1;
-    }
-    else {
-        return [super hash];
-    }
+    return [_primaryKeyValue hash];
 }
 
 #pragma mark - <NSCopying>
