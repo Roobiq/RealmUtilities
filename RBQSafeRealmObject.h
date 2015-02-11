@@ -73,7 +73,7 @@
 /**
  *  Create a RLMObject in a specific Realm from a RBQSafeObject
  *
- *  @param realm      Realm in whcih the returned RLMObject is persisted
+ *  @param realm      Realm in which the returned RLMObject is persisted
  *  @param safeObject RBQSafeRealm object to convert into RLMObject
  *
  *  @return Converted RLMObject

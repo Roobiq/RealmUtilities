@@ -1,6 +1,6 @@
 //
 //  RLMObject+Utilities.h
-//  RBQFetchedResultsControllerExample
+//  RealmUtilities 
 //
 //  Created by Adam Fish on 1/9/15.
 //  Copyright (c) 2015 Roobiq. All rights reserved.
