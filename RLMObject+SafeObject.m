@@ -18,7 +18,7 @@
 
 + (instancetype)rbq_objectFromSafeObject:(RBQSafeRealmObject *)safeObject
 {
-    if (![[self className] isEqualToString:safeObject.className]) {
+    if (![[self className] isEqualToString:safeObject.className] || !safeObject.primaryKeyValue) {
         return nil;
     }
     return [self objectForPrimaryKey:safeObject.primaryKeyValue];
@@ -26,10 +26,10 @@
 
 + (instancetype)rbq_objectInRealm:(RLMRealm *)realm fromSafeObject:(RBQSafeRealmObject *)safeObject
 {
-    if (![[self className] isEqualToString:safeObject.className]) {
+    if (![[self className] isEqualToString:safeObject.className] || !safeObject.primaryKeyValue) {
         return nil;
     }
-    return [self objectInRealm:realm forPrimaryKey:safeObject];
+    return [self objectInRealm:realm forPrimaryKey:safeObject.primaryKeyValue];
 
 }
 
