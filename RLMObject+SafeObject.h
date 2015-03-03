@@ -10,14 +10,10 @@
 
 @class RBQSafeRealmObject;
 
-@interface RLMObject (SafeObject)
-
 /**
- *  Create a RBQSafeRealmObject from a RLMObject
- *
- *  @return RBQSafeRealmObject which is a thread-safe representation of the original RLMObject
+ *  Category methods for RLMObject to convert into a RBQSafeRealmObject and vice versa
  */
-- (RBQSafeRealmObject *)rbq_safeObject;
+@interface RLMObject (SafeObject)
 
 /**
  *  Create a RLMObject from a RBQSafeRealmObject
@@ -42,5 +38,12 @@
  */
 + (instancetype)rbq_objectInRealm:(RLMRealm *)realm
                    fromSafeObject:(RBQSafeRealmObject *)safeObject;
+
+/**
+ *  Create a RBQSafeRealmObject from a RLMObject
+ *
+ *  @return RBQSafeRealmObject which is a thread-safe representation of the original RLMObject
+ */
+- (RBQSafeRealmObject *)rbq_safeObject;
 
 @end
