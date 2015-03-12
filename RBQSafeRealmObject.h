@@ -7,6 +7,7 @@
 //
 
 #import <Realm/Realm.h>
+#import "RLMProperty.h"
 
 /**
  *  An RBQSafeRealmObject acts as a thread-safe representation of a RLMObject.

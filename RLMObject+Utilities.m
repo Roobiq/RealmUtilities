@@ -9,6 +9,8 @@
 #import "RLMObject+Utilities.h"
 
 #import <Realm/Realm.h>
+#import <RLMObjectSchema.h>
+#import <RLMProperty.h>
 
 @implementation RLMObject (Utilities)
 

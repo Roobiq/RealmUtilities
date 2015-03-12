@@ -9,6 +9,8 @@
 #import "RBQSafeRealmObject.h"
 #import "RLMObject+Utilities.h"
 
+#import <RLMObjectSchema.h>
+
 @interface RBQSafeRealmObject ()
 
 @property (strong, nonatomic) NSString *realmPath;
