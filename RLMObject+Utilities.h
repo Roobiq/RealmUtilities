@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Roobiq. All rights reserved.
 //
 
-#import "RLMObject.h"
+#import <Realm/Realm.h>
 /**
  *  This utility category provides convenience methods to retrieve the primary key and original
  *  class name for an RLMObject.
@@ -24,11 +24,13 @@
 
 /**
  *  Retrieve the original class name for a generic RLMObject. Realm dynamically changes the class at
- *  run-time, whereas this method returns the class name specified in the source code.
+ *  run-time, whereas this method returns the programatic class name.
+ *
+ *  @warning This method returns the class name to be used programatically (such as with NSClassFromString()). Class names within Swift follow the pattern: "AppName.ClassName" whereas Obj-C it is simply "ClassName". See Apple docs for more info: http://apple.co/1HMPGjg
  *
  *  @param object A RLMObject
  *
- *  @return Original class name
+ *  @return Original programatic class name
  */
 + (NSString *)classNameForObject:(RLMObject *)object;
 

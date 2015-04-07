@@ -43,7 +43,26 @@
 
 + (NSString *)classNameForObject:(RLMObject *)object
 {
-    return [[object class] className];
+    // Returns the class name in code (i.e. "TestObject" not "RLMAccessor_V0_TestObject")
+    NSString *className = [[object class] className];
+    
+    Class objcClass = NSClassFromString(className);
+    
+    // If we have Obj-C class return the name
+    if (objcClass) {
+        return className;
+    }
+    
+    /*
+     *  Create the Swift class name (i.e. "AppName.ClassName")
+     *
+     *  https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/WritingSwiftClassesWithObjective-CBehavior.html#//apple_ref/doc/uid/TP40014216-CH5-XID_68
+     */
+    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+    
+    NSString *swiftClassName = [NSString stringWithFormat:@"%@.%@",appName,className];
+    
+    return swiftClassName;
 }
 
 @end
