@@ -68,7 +68,7 @@
  *
  *  @return RLMObject (not thread-safe)
  */
-+ (RLMObject *)objectfromSafeObject:(RBQSafeRealmObject *)safeObject;
++ (id)objectfromSafeObject:(RBQSafeRealmObject *)safeObject;
 
 /**
  *  Create a RLMObject in a specific Realm from a RBQSafeObject
@@ -78,15 +78,15 @@
  *
  *  @return Converted RLMObject
  */
-+ (RLMObject *)objectInRealm:(RLMRealm *)realm
-              fromSafeObject:(RBQSafeRealmObject *)safeObject;
++ (id)objectInRealm:(RLMRealm *)realm
+     fromSafeObject:(RBQSafeRealmObject *)safeObject;
 
 /**
  *  Quickly convert a RBQSafeRealm object into its RLMObject
  *
  *  @return RLMObject
  */
-- (RLMObject *)RLMObject;
+- (id)RLMObject;
 
 /**
  *  Equality test for RBQSafeObject

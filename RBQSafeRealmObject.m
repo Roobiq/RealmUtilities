@@ -40,13 +40,13 @@
                                      realm:object.realm];
 }
 
-+ (RLMObject *)objectfromSafeObject:(RBQSafeRealmObject *)safeObject
++ (id)objectfromSafeObject:(RBQSafeRealmObject *)safeObject
 {
     return [RBQSafeRealmObject objectInRealm:[RLMRealm defaultRealm] fromSafeObject:safeObject];
 }
 
-+ (RLMObject *)objectInRealm:(RLMRealm *)realm
-              fromSafeObject:(RBQSafeRealmObject *)safeObject
++ (id)objectInRealm:(RLMRealm *)realm
+     fromSafeObject:(RBQSafeRealmObject *)safeObject
 {
     return [NSClassFromString(safeObject.className) objectInRealm:realm
                                                     forPrimaryKey:safeObject.primaryKeyValue];
@@ -76,7 +76,7 @@
     return [RLMRealm realmWithPath:self.realmPath];
 }
 
-- (RLMObject *)RLMObject
+- (id)RLMObject
 {
     return [RBQSafeRealmObject objectInRealm:self.realm fromSafeObject:self];
 }
