@@ -9,7 +9,7 @@
 #import "RBQSafeRealmObject.h"
 #import "RLMObject+Utilities.h"
 
-#import <RLMObjectSchema.h>
+#import <Realm/RLMObjectSchema.h>
 
 @interface RBQSafeRealmObject ()
 
