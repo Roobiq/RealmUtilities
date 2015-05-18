@@ -58,9 +58,11 @@
      *
      *  https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/WritingSwiftClassesWithObjective-CBehavior.html#//apple_ref/doc/uid/TP40014216-CH5-XID_68
      */
-    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+    NSBundle *classBundle = [NSBundle bundleForClass:[object class]];
     
-    NSString *swiftClassName = [NSString stringWithFormat:@"%@.%@",appName,className];
+    NSString *bundleName = [classBundle objectForInfoDictionaryKey:@"CFBundleName"];
+    
+    NSString *swiftClassName = [NSString stringWithFormat:@"%@.%@",bundleName,className];
     
     return swiftClassName;
 }
