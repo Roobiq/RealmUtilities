@@ -58,13 +58,32 @@
      *
      *  https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/WritingSwiftClassesWithObjective-CBehavior.html#//apple_ref/doc/uid/TP40014216-CH5-XID_68
      */
-    NSBundle *classBundle = [NSBundle bundleForClass:[object class]];
     
-    NSString *bundleName = [classBundle objectForInfoDictionaryKey:@"CFBundleName"];
+    @try {
+        Class objectClass = [object.objectSchema valueForKey:@"objectClass"];
+        
+        NSBundle *classBundle = [NSBundle bundleForClass:objectClass];
+        
+        NSString *bundleName = [classBundle objectForInfoDictionaryKey:@"CFBundleName"];
+        
+        NSString *swiftClassName = [NSString stringWithFormat:@"%@.%@",bundleName,className];
+        
+        return swiftClassName;
+    }
+    @catch (NSException *exception) {
+        if (exception.name == NSUndefinedKeyException) {
+            @throw [NSException exceptionWithName:@"RBQException"
+                                           reason:@"RLMObjectSchema doesn't contain original objectClass. Please file a GitHub issue regarding this."
+                                         userInfo:nil];
+        }
+        else {
+            @throw;
+        }
+    }
     
-    NSString *swiftClassName = [NSString stringWithFormat:@"%@.%@",bundleName,className];
-    
-    return swiftClassName;
+    @throw [NSException exceptionWithName:@"RBQException"
+                                   reason:@"Class name for the RLMObject could not be found."
+                                 userInfo:nil];
 }
 
 @end
