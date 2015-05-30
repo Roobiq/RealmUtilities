@@ -13,10 +13,8 @@
 
 - (BOOL)containsObject:(RLMObject *)anObject
 {
-    for (RLMObject *containedObject in self) {
-        if ([containedObject isEqualToObject:anObject]) {
-            return YES;
-        }
+    if ([self indexOfObject:anObject] != NSNotFound) {
+        return YES;
     }
     return NO;
 }

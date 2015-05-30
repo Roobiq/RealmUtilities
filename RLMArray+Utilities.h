@@ -11,7 +11,7 @@
 @interface RLMArray (Utilities)
 
 /**
- *  Retrieve the primary key for a given RLMObject
+ *  Detect if RLMArray contains a given RLMObject
  *
  *  @param anObject RLMObject
  *
