@@ -7,7 +7,7 @@
 //
 
 #import "RLMArray+Utilities.h"
-#import "RLMObject.h"
+#import <Realm/RLMObject.h>
 
 @implementation RLMArray (Utilities)
 
