@@ -8,6 +8,9 @@
 
 #import "RLMArray.h"
 
+/**
+ *  This utility category provides convenience methods on RLMArray.
+ */
 @interface RLMArray (Utilities)
 
 /**
