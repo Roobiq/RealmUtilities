@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 Roobiq. All rights reserved.
 //
 
-#import "RLMArray.h"
+#import <Realm/RLMArray.h>
 
 /**
  *  This utility category provides convenience methods on RLMArray.
