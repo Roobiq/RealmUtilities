@@ -34,4 +34,13 @@
  */
 + (NSString *)classNameForObject:(RLMObject *)object;
 
+/**
+ *  Checks to see if this object exist in the passed in RLMRealm by doing a primary key look up.
+ *
+ *  @param realm RLMRealm to checked for existance of the current object
+ *
+ *  @return BOOL value for if an object with the same primary key exists in realm or not.
+ */
+- (BOOL)isContainedInRealm:(RLMRealm *)realm;
+
 @end
