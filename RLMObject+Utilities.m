@@ -86,4 +86,21 @@
                                  userInfo:nil];
 }
 
+- (BOOL)isContainedInRealm:(RLMObject *)realm {
+    if (!realm || !self.objectSchema.primaryKeyProperty) {
+        return NO;
+    }
+    
+    id primaryKeyValue = nil;
+    primaryKeyValue = [RLMObject primaryKeyValueForObject:self];
+    
+    if (primaryKeyValue) {
+        NSString *objectClassName = [RLMObject classNameForObject:self];
+        Class objectClass = NSClassFromString(objectClassName);
+        return !![objectClass objectInRealm:realm forPrimaryKey:primaryKeyValue];
+    } else {
+        return NO;
+    }
+}
+
 @end
