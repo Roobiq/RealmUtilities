@@ -86,7 +86,8 @@
                                  userInfo:nil];
 }
 
-- (BOOL)isContainedInRealm:(RLMObject *)realm {
+- (BOOL)isContainedInRealm:(RLMRealm *)realm
+{
     if (!realm || !self.objectSchema.primaryKeyProperty) {
         return NO;
     }
