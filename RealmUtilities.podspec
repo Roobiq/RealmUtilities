@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "0.1"
   s.summary      = "Various utility classes/categories to simplify using Realm."
   s.description  = <<-DESC
-Categories to simplify working with Realm.
+Categories that work with various Realm classes to simplify working with Realm.
                    DESC
   s.homepage     = "https://github.com/Roobiq/RealmUtilities"
   s.license      = { :type => "MIT", :file => "LICENSE" }
