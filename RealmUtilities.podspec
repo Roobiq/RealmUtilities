@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RealmUtilities"
-  s.version      = "0.2"
+  s.version      = "0.2.1"
   s.summary      = "Various utility classes/categories to simplify using Realm."
   s.description  = <<-DESC
 Categories that work with various Realm classes to simplify working with Realm.
@@ -13,6 +13,6 @@ Categories that work with various Realm classes to simplify working with Realm.
   s.source       = { :git => "https://github.com/Roobiq/RealmUtilities.git", :tag => "v#{s.version}"}
   s.source_files  = "*.{h,m}"
   s.requires_arc = true
-  s.dependency "Realm"
+  s.dependency 'Realm', '>= 0.95'
 
 end
