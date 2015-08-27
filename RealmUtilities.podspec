@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RealmUtilities"
-  s.version      = "0.1"
+  s.version      = "0.2"
   s.summary      = "Various utility classes/categories to simplify using Realm."
   s.description  = <<-DESC
 Categories that work with various Realm classes to simplify working with Realm.
