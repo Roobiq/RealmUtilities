@@ -41,51 +41,6 @@
                                  userInfo:nil];
 }
 
-+ (NSString *)classNameForObject:(RLMObject *)object
-{
-    // Returns the class name in code (i.e. "TestObject" not "RLMAccessor_V0_TestObject")
-    NSString *className = [[object class] className];
-    
-    Class objcClass = NSClassFromString(className);
-    
-    // If we have Obj-C class return the name
-    if (objcClass) {
-        return className;
-    }
-    
-    /*
-     *  Create the Swift class name (i.e. "AppName.ClassName")
-     *
-     *  https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/WritingSwiftClassesWithObjective-CBehavior.html#//apple_ref/doc/uid/TP40014216-CH5-XID_68
-     */
-    
-    @try {
-        Class objectClass = [object.objectSchema valueForKey:@"objectClass"];
-        
-        NSBundle *classBundle = [NSBundle bundleForClass:objectClass];
-        
-        NSString *bundleName = [classBundle objectForInfoDictionaryKey:@"CFBundleName"];
-        
-        NSString *swiftClassName = [NSString stringWithFormat:@"%@.%@",bundleName,className];
-        
-        return swiftClassName;
-    }
-    @catch (NSException *exception) {
-        if (exception.name == NSUndefinedKeyException) {
-            @throw [NSException exceptionWithName:@"RBQException"
-                                           reason:@"RLMObjectSchema doesn't contain original objectClass. Please file a GitHub issue regarding this."
-                                         userInfo:nil];
-        }
-        else {
-            @throw;
-        }
-    }
-    
-    @throw [NSException exceptionWithName:@"RBQException"
-                                   reason:@"Class name for the RLMObject could not be found."
-                                 userInfo:nil];
-}
-
 - (BOOL)isContainedInRealm:(RLMRealm *)realm
 {
     if (!realm || !self.objectSchema.primaryKeyProperty) {
