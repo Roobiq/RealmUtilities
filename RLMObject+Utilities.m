@@ -9,6 +9,7 @@
 #import "RLMObject+Utilities.h"
 
 #import <Realm/Realm.h>
+#import <Realm/RLMRealm_Dynamic.h>
 #import <Realm/RLMObjectSchema.h>
 #import <Realm/RLMProperty.h>
 
@@ -51,9 +52,9 @@
     primaryKeyValue = [RLMObject primaryKeyValueForObject:self];
     
     if (primaryKeyValue) {
-        NSString *objectClassName = [RLMObject classNameForObject:self];
-        Class objectClass = NSClassFromString(objectClassName);
-        return !![objectClass objectInRealm:realm forPrimaryKey:primaryKeyValue];
+        NSString *objectClassName = [[self class] className];
+        
+        return !![realm objectWithClassName:objectClassName forPrimaryKey:primaryKeyValue];
     } else {
         return NO;
     }
