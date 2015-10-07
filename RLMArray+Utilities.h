@@ -20,6 +20,6 @@
  *
  *  @return YES if RLMArray contains given object
  */
-- (BOOL)containsObject:(RLMObject *)anObject;
+- (BOOL)containsObject:(nonnull RLMObject *)anObject;
 
 @end

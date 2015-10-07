@@ -20,7 +20,7 @@
  *
  *  @return Primary key value (NSInteger or NSString only)
  */
-+ (id)primaryKeyValueForObject:(RLMObject *)object;
++ (nonnull id)primaryKeyValueForObject:(nonnull RLMObject *)object;
 
 /**
  *  Checks to see if this object exist in the passed in RLMRealm by doing a primary key look up.
@@ -29,6 +29,6 @@
  *
  *  @return BOOL value for if an object with the same primary key exists in realm or not.
  */
-- (BOOL)isContainedInRealm:(RLMRealm *)realm;
+- (BOOL)isContainedInRealm:(nonnull RLMRealm *)realm;
 
 @end

@@ -21,6 +21,6 @@
  *
  *  @return Primary key value (NSInteger or NSString only)
  */
-+ (id)primaryKeyValueForObject:(RLMObjectBase *)object;
++ (nonnull id)primaryKeyValueForObject:(nonnull RLMObjectBase *)object;
 
 @end
