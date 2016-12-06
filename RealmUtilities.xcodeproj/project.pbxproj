@@ -14,7 +14,7 @@
 		F90B2EA01DF6A22000C88C00 /* RLMObjectBase+Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = F90B2E9A1DF6A22000C88C00 /* RLMObjectBase+Utilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F90B2EA11DF6A22000C88C00 /* RLMObjectBase+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F90B2E9B1DF6A22000C88C00 /* RLMObjectBase+Utilities.m */; };
 		F90B2EA41DF6A62400C88C00 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F90B2EA31DF6A62400C88C00 /* Realm.framework */; };
-		F90B2EA81DF6A87200C88C00 /* RealmUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = F90B2EA71DF6A87200C88C00 /* RealmUtilities.h */; };
+		F90B2EA81DF6A87200C88C00 /* RealmUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = F90B2EA71DF6A87200C88C00 /* RealmUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
